@@ -1,12 +1,3 @@
-# go-embed
-
-## Install
-
-`$ go get -u github.com/nu50218/go-embed`
-
-## Usage
-
-```go
 package main
 
 import (
@@ -30,6 +21,15 @@ type T2 struct {
 	C string
 }
 
+func printT2(t2 T2) {
+	fmt.Println("{")
+	fmt.Printf("  A: %v\n", t2.A)
+	fmt.Printf("  B: %v\n", t2.B)
+	fmt.Printf("  C: %v\n", t2.C)
+	fmt.Printf("  D: %v\n", t2.D)
+	fmt.Println("}")
+}
+
 func main() {
 	t1 := T1{
 		A: 100,
@@ -39,22 +39,10 @@ func main() {
 	t2 := T2{}
 
 	printT2(t2)
-	// {
-	//   A: 0
-	//   B: 0
-	//   C:
-	//   D: false
-	// }
 
 	if err := embed.Embed(&t2, &t1); err != nil {
 		log.Fatal(err)
 	}
 
 	printT2(t2)
-	// {
-	//   A: 100
-	//   B: 1000000
-	//   C: hoge
-	//   D: false
-	// }
-```
+}
