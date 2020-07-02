@@ -57,4 +57,5 @@ func main() {
 	//   C: hoge
 	//   D: false
 	// }
+}
 ```
